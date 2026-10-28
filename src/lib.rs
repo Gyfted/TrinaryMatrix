@@ -122,6 +122,18 @@ impl Matrix {
     /// Evaluate by subtracting, skipping, or adding each input activation.
     ///
     /// No partial output is returned on failure. Inputs and matrix are immutable.
+    ///
+    /// ```
+    /// use trinarymatrix::{Error, Matrix};
+    ///
+    /// let matrix = Matrix::new(1, 3, vec![1, 0, -1])?;
+    /// assert_eq!(matrix.infer(&[4, -2, 3])?, vec![1]);
+    /// assert_eq!(
+    ///     matrix.infer(&[4, -2]),
+    ///     Err(Error::InputLength { expected: 3, actual: 2 }),
+    /// );
+    /// # Ok::<(), Error>(())
+    /// ```
     pub fn infer(&self, input: &[i64]) -> Result<Vec<i64>, Error> {
         self.validate_input(input)?;
         let mut output = Vec::with_capacity(self.rows);

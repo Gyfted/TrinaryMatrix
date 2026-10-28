@@ -12,7 +12,8 @@ establish a complete guest software stack.
 
 ## Run
 
-Install a stable Rust toolchain with Cargo, then run:
+Install a complete stable Rust toolchain, including Cargo, rustc, rustdoc,
+rustfmt, and Clippy, then run:
 
 ```sh
 cargo run -- --check
@@ -47,10 +48,12 @@ check: passed (host simulation; no physical performance claim)
   is not a recoverable modeled error. There are no biases, quantization,
   training, nonlinear layers, model import, or persistent storage APIs yet.
 
-Tests compare all 729 two-by-three ternary matrices against all 125 vectors over
-`[-2, 2]`, exercise integer boundaries and invalid inputs, and check the CLI's
-success and failure paths. No timing, energy, silicon efficiency, or speedup is
-claimed. Both implementations execute on the development host.
+`cargo test` includes the executable API documentation example as well as the
+integration tests. Tests compare all 729 two-by-three ternary matrices against
+all 125 vectors over `[-2, 2]`, exercise integer boundaries and invalid inputs,
+and check the CLI's success and failure paths. No timing, energy, silicon
+efficiency, or speedup is claimed. Both implementations execute on the
+development host.
 
 See [the coverage map](docs/TRINARYASM_COVERAGE.md) for explicit host/guest
 boundaries and [the native-stack sequence](docs/NATIVE_STACK.md) for future gates.
