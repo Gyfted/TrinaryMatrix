@@ -12,15 +12,20 @@ establish a complete guest software stack.
 
 ## Run
 
-Install a complete stable Rust toolchain, including Cargo, rustc, rustdoc,
-rustfmt, and Clippy, then run:
+With rustup installed, `rust-toolchain.toml` selects Rust 1.99.1 and the rustfmt
+and Clippy components. The compiler toolchain includes Cargo and rustdoc. Run:
 
 ```sh
-cargo run -- --check
-cargo test
-cargo fmt -- --check
-cargo clippy --all-targets -- -D warnings
+cargo run --locked --offline -- --check
+cargo test --locked --offline
+cargo fmt --all -- --check
+cargo clippy --locked --offline --all-targets -- -D warnings
 ```
+
+GitHub Actions runs these same checks on pull requests to `main` and pushes to
+`main` or the scaffold development branch. The workflow uses a read-only
+repository token and does not persist checkout credentials. Toolchain setup
+requires a network connection; the dependency-free crate checks run offline.
 
 The fixed demo multiplies a two-row matrix by `[4, -2, 3]` and checks `[1, -3]`:
 
