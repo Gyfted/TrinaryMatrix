@@ -1,0 +1,8 @@
+[package]
+name = "trinarymatrix"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "A small host-side reference simulator for ternary-weight matrix-vector inference"
+
+[dependencies]
