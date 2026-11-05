@@ -29,7 +29,10 @@ fn non_unicode_arguments_fail_without_panicking() {
     use std::os::unix::ffi::OsStringExt;
 
     let invalid = OsString::from_vec(vec![0xff]);
-    for args in [vec![invalid.clone()], vec![OsString::from("--check"), invalid]] {
+    for args in [
+        vec![invalid.clone()],
+        vec![OsString::from("--check"), invalid],
+    ] {
         let result = Command::new(env!("CARGO_BIN_EXE_trinarymatrix"))
             .args(args)
             .output()
