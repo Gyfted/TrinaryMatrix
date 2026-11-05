@@ -2,7 +2,7 @@ use std::process::ExitCode;
 use trinarymatrix::Matrix;
 
 fn run() -> Result<(), Box<dyn std::error::Error>> {
-    let args: Vec<_> = std::env::args().skip(1).collect();
+    let args: Vec<_> = std::env::args_os().skip(1).collect();
     if !args.is_empty() && args != ["--check"] {
         return Err("usage: trinarymatrix [--check]".into());
     }
