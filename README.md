@@ -27,12 +27,12 @@ GitHub Actions runs these same checks on pull requests to `main` and pushes to
 repository token and does not persist checkout credentials. Toolchain setup
 requires a network connection; the dependency-free crate checks run offline.
 
-The fixed demo multiplies a two-row matrix by `[4, -2, 3]` and checks `[1, -3]`:
+The fixed demo multiplies a three-by-three ternary matrix by `[4, -2, 3]` and checks `[6, -3, 1]`:
 
 ```text
 input: [4, -2, 3]
-add/sub/skip output: [1, -3]
-multiply reference: [1, -3]
+add/sub/skip output: [6, -3, 1]
+multiply reference: [6, -3, 1]
 check: passed (host simulation; no physical performance claim)
 ```
 
