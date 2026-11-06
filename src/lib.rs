@@ -168,12 +168,10 @@ impl Matrix {
                     return Err(Error::ArithmeticOverflow { row, column });
                 }
             }
-            output.push(
-                i64::try_from(sum).map_err(|_| Error::ArithmeticOverflow {
-                    row,
-                    column: self.columns - 1,
-                })?,
-            );
+            output.push(i64::try_from(sum).map_err(|_| Error::ArithmeticOverflow {
+                row,
+                column: self.columns - 1,
+            })?);
         }
         Ok(output)
     }
